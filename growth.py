@@ -5,7 +5,6 @@ from io import BytesIO
 
 st.set_page_config(page_title="Growth Mindset challenge",layout='wide')
 
-# custom css
 st.markdown(
     """
      <style>
@@ -18,11 +17,9 @@ st.markdown(
 unsafe_allow_html=True
 )
 
-# title amd discription
 st.title("Datasweeper Sterling Integrator ⚙️ By Taha Siddiqui 🧑‍💻")
 st.write("Transform your file between CSV 📂 and Excel 📊 formats with built-in data cleaning 🧹 and visualization 📈. Creating the project for quarter 03 !🚀")
 
-# file uploader
 uploaded_files = st.file_uploader("Upload 📤 you files (accept CSV 📂 or Excel 📊):", type=["csv","xlsx"], accept_multiple_files=(True))
 
 if uploaded_files:
@@ -37,11 +34,9 @@ if uploaded_files:
             st.error(f"unsupported file type: {file_ext}")
             continue
 
-        # file details
         st.write("Preview the head of the Dataframe")
         st.dataframe(df.head())
 
-        # data cleaning options
         st.subheader("Data Cleaning Options")
         if st.checkbox(f"Clean data for {file.name}"):
             col1, col2, = st.columns(2)
@@ -62,12 +57,10 @@ if uploaded_files:
         df = df[columns]
 
 
-        # data visualization
         st.subheader("Data Visualization")
         if st.checkbox(f"Show visualization for {file.name}"):
             st.bar_chart(df.select_dtypes(include='number').iloc[:, :2])
-
-        # Conversion Option
+            
 
         st.subheader("Conversion Option")
         conversion_type = st.radio(f"Convert {file.name} to:", ["CSV" , "Excel"], key=file.name)
