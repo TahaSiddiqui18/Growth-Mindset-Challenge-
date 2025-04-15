@@ -3,7 +3,7 @@ import pandas as pd
 import os
 from io import BytesIO
 
-st.set_page_config(page_title="Data Sweeper", layout='wide')
+st.set_page_config(page_title="Data sweeper",layout='wide')
 
 # custom css
 st.markdown(
@@ -14,7 +14,7 @@ st.markdown(
          color: white;
          }
      </style>
-""",
+    """,
 unsafe_allow_html=True
 )
 
@@ -23,15 +23,15 @@ st.title("Datasweeper Sterling Integrator By Taha Siddiqui")
 st.write("Transform your file between CSV and Excel formats with built-in data cleaning and visualization Creating the project for quarter 03!")
 
 # file uploader
-uploaded_files = st.file_uploader("Upload you files (accept CVS or Excel):", type=["cvs","xlsx"], accept_multiple_files=(True))
+uploaded_files = st.file_uploader("Upload you files (accept CSV or Excel):", type=["csv","xlsx"], accept_multiple_files=(True))
 
 if uploaded_files:
     for file in uploaded_files:
         file_ext = os.path.splitext(file.name)[-1].lower()
 
-        if file_ext == ".cav":
+        if file_ext == ".csv":
             df = pd.read_csv(file)
-        elif file_ext == "xlsx":
+        elif file_ext == ".xlsx":
             df = pd.read_excel(file)
         else:
             st.error(f"unsupported file type: {file_ext}")
@@ -58,7 +58,7 @@ if uploaded_files:
                     st.write("Missing values have been filled!")
         
         st.subheader("Select Columns to Keep")
-        columns = st.multiselect(f"Choose colmns for {file.name}", df.columns, default=df.columns)
+        columns = st.multiselect(f"Choose columns for {file.name}", df.columns, default=df.columns)
         df = df[columns]
 
 
@@ -70,7 +70,7 @@ if uploaded_files:
         # Conversion Option
 
         st.subheader("Conversion Option")
-        conversion_type = st.radio(f"Convert {file.name} to:", ["CVC" , "Excel"], key=file.name)
+        conversion_type = st.radio(f"Convert {file.name} to:", ["CSV" , "Excel"], key=file.name)
         if st.button(f"Convert{file.name}"):
             buffer = BytesIO()
             if conversion_type == "CSV":
