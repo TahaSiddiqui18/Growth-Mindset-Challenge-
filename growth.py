@@ -20,7 +20,7 @@ unsafe_allow_html=True
 
 # title amd discription
 st.title("Datasweeper Sterling Integrator ⚙️ By Taha Siddiqui 🧑‍💻")
-st.write("Transform your file between CSV and Excel formats with built-in data cleaning and visualization Creating the project for quarter 03!")
+st.write("Transform your file between CSV 📂 and Excel 📊 formats with built-in data cleaning 🧹 and visualization 📈. Creating the project for quarter 03 !🚀")
 
 # file uploader
 uploaded_files = st.file_uploader("Upload you files (accept CSV or Excel):", type=["csv","xlsx"], accept_multiple_files=(True))
